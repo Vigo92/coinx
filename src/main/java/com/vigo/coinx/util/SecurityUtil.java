@@ -48,8 +48,6 @@ public class SecurityUtil {
 
     public Map<String, String> hashPassword(String clearTextPassword) {
         ByteSource salt = getSalt();
-
-
         Map<String, String> credMap = new HashMap<>();
         credMap.put("hashedPassword", hashAndSaltPassword(clearTextPassword, salt));
         credMap.put("salt", salt.toHex());

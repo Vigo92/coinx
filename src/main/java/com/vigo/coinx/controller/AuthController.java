@@ -2,7 +2,9 @@ package com.vigo.coinx.controller;
 
 
 import com.vigo.coinx.exceptions.InvalidCredentialsException;
+import com.vigo.coinx.exceptions.InvalidRequestException;
 import com.vigo.coinx.exceptions.ResourceNotFoundException;
+import com.vigo.coinx.exceptions.UserAlreadyExistsException;
 import com.vigo.coinx.model.request.ChangePasswordRequest;
 import com.vigo.coinx.model.request.LoginRequest;
 import com.vigo.coinx.model.request.SignupRequest;
@@ -42,7 +44,7 @@ public class AuthController {
 
     @POST
     @Path("/login")
-    public Response register(@Valid SignupRequest signupRequest) throws InvalidCredentialsException, ResourceNotFoundException {
+    public Response register(@Valid SignupRequest signupRequest) throws ResourceNotFoundException, UserAlreadyExistsException {
         SignupResponse signupResponse = authService.signUp(signupRequest, uriInfo);
         return Response.ok(signupResponse).build();
     }
@@ -56,7 +58,7 @@ public class AuthController {
 
     @GET
     @Path("/confirm-email/{token}")
-    public Response confirmEmail(@PathParam("token") String token) throws InvalidCredentialsException, ResourceNotFoundException {
+    public Response confirmEmail(@PathParam("token") String token) throws ResourceNotFoundException, InvalidRequestException {
         SignupResponse signupResponse = authService.confirmEmail(token);
         return Response.ok(signupResponse).build();
     }
