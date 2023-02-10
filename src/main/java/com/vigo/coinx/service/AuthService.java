@@ -1,6 +1,7 @@
 package com.vigo.coinx.service;
 
 import com.vigo.coinx.exceptions.InvalidCredentialsException;
+import com.vigo.coinx.exceptions.InvalidRequestException;
 import com.vigo.coinx.exceptions.ResourceNotFoundException;
 import com.vigo.coinx.exceptions.UserAlreadyExistsException;
 import com.vigo.coinx.model.request.ChangePasswordRequest;
@@ -15,7 +16,7 @@ public interface AuthService {
 
     SignupResponse signUp(SignupRequest signupRequest, UriInfo uriInfo) throws ResourceNotFoundException, UserAlreadyExistsException;
 
-    SignupResponse changePassword(ChangePasswordRequest changePasswordRequest, UriInfo uriInfo);
+    SignupResponse changePassword(ChangePasswordRequest changePasswordRequest, UriInfo uriInfo) throws ResourceNotFoundException;
 
-    SignupResponse confirmEmail(String token);
+    SignupResponse confirmEmail(String token) throws ResourceNotFoundException, InvalidRequestException;
 }

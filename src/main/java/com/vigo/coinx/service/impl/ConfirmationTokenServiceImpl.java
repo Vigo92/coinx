@@ -38,9 +38,6 @@ public class ConfirmationTokenServiceImpl implements ConfirmationTokenService {
     @Override
     public int updateConfirmationToken(ConfirmationToken confirmationToken) throws ResourceNotFoundException, InvalidRequestException {
         ConfirmationToken confirmationToken1 = findByToken(confirmationToken.getToken());
-        if(Objects.nonNull(confirmationToken.getConfirmedAt())){
-            throw new InvalidRequestException("Token has already been used");
-        }
         return confirmationTokenRepository.updateConfirmationToken(confirmationToken);
     }
 }

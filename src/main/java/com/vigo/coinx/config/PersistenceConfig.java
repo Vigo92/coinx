@@ -2,6 +2,9 @@ package com.vigo.coinx.config;
 
 import jakarta.annotation.sql.DataSourceDefinition;
 import jakarta.ejb.Stateless;
+import jakarta.enterprise.inject.Produces;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  * @author :  Ugochukwu Vigo Obia
@@ -20,4 +23,8 @@ import jakarta.ejb.Stateless;
 )
 @Stateless
 public class PersistenceConfig {
+
+    @Produces
+    @PersistenceContext
+    EntityManager entityManager;
 }

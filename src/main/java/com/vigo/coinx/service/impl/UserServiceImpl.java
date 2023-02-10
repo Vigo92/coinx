@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
     public boolean authenticateUser(String email, String password) throws ResourceNotFoundException {
         AppUser appUser = userRepository.findByEmail(email);
         if(Objects.isNull(appUser)){
-            throw new ResourceNotFoundException();
+            throw new ResourceNotFoundException("Invalid username or Password!");
         }
         return securityUtil.passwordsMatch(appUser.getPassword(),appUser.getSalt(),password);
     }
@@ -39,5 +39,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void save( @NotNull AppUser appUser) {
          userRepository.save(appUser);
+    }
+
+    @Override
+    public int updateUser( @NotNull AppUser appUser) {
+        return userRepository.updateUser(appUser);
     }
 }

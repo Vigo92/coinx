@@ -22,4 +22,10 @@ public class UserRepositoryImpl implements UserRepository {
     public void save(AppUser appUser) {
          entityManager.persist(appUser);
     }
+
+    @Override
+    public int updateUser(AppUser appUser) {
+        entityManager.merge(appUser);
+        return 0;
+    }
 }

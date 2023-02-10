@@ -11,5 +11,7 @@ public interface UserService {
 
     AppUser findByEmail(String email) throws ResourceNotFoundException;
 
-    void save(AppUser appUser1);
+    void save(AppUser appUser);
+
+    int updateUser(AppUser appUser);
 }
