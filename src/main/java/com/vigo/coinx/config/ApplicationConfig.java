@@ -37,6 +37,7 @@ public class ApplicationConfig extends Application {
     public void addRestResourceClasses(Set<Class<?>> resources){
         resources.add(AuthController.class);
         resources.add(AdminController.class);
+        resources.add(UserController.class);
         resources.add(InvalidCredentialExceptionMapper.class);
         resources.add(InvalidRequestExceptionMapper.class);
         resources.add(ResourceNotFoundExceptionMapper.class);
